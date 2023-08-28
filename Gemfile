@@ -66,3 +66,7 @@ group :test do
 end
 
 gem "jsbundling-rails", "~> 1.1"
+
+gem "cssbundling-rails", "~> 1.2"
+
+gem "react-rails", "~> 3.1"
