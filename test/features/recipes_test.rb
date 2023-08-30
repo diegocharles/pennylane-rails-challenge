@@ -12,7 +12,7 @@ class RecipesTest < ActionDispatch::SystemTestCase
   test "searching for recipes by single ingredient" do
     visit root_url
     fill_in "ingredientSearch", with: "egg"
-    sleep(2)  # wait for 2 seconds for the search to complete
+    sleep(2)
 
     assert_text "Egg Dish"
   end
@@ -20,16 +20,16 @@ class RecipesTest < ActionDispatch::SystemTestCase
   test "searching for recipes by multiple ingredients" do
     visit root_url
     fill_in "ingredientSearch", with: "egg, milk"
-    sleep(2)  # wait for 2 seconds for the search to complete
+    sleep(2)
 
     assert_text "Egg and Milk Dish"
   end
 
   test "handling no results" do
     visit root_url
-    fill_in "ingredientSearch", with: "dragonfruit"
-    sleep(2)  # wait for 2 seconds for the search to complete
+    fill_in "ingredientSearch", with: "banana"
+    sleep(2)
 
-    assert_text "Dragonfruit Dish"
+    assert_text "No recipes found for the given ingredients"
   end
 end

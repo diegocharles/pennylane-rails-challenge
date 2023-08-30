@@ -4,7 +4,7 @@ recipes_data = JSON.parse(file)
 
 recipes_data[0..20].each do |recipe_data|
   puts "Creating recipe: #{recipe_data['title']}"
-  recipe = Recipe.create!(
+  recipe = Recipe.create(
     title: recipe_data['title'],
     cook_time: recipe_data['cook_time'],
     prep_time: recipe_data['prep_time'],

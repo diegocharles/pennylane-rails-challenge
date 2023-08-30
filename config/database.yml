@@ -79,8 +79,7 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+
 production:
-  <<: *default
-  database: pennylane_test_production
-  username: pennylane_test
-  password: <%= ENV["PENNYLANE_TEST_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  database_url: <%= ENV['DATABASE_URL'] %>
