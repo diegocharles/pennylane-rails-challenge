@@ -1,23 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
+// app/javascript/components/Home.js
 
-export default () => (
-  <div className="vw-100 vh-100 primary-color d-flex align-items-center justify-content-center">
-    <div className="jumbotron jumbotron-fluid bg-transparent">
-      <div className="container secondary-color">
-        <h1 className="display-4">Food Recipes</h1>
-        <p className="lead">
-          A curated list of recipes for the best homemade meal and delicacies.
-        </p>
-        <hr className="my-4" />
-        <Link
-          to="/recipes"
-          className="btn btn-lg custom-button"
-          role="button"
-        >
-          View Recipes
-        </Link>
+import React, { useState } from 'react';
+import RecipesList from './RecipesList';
+import Search from './Search';
+
+const Home = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  return (
+    <div className="container">
+      <h1>Welcome to my fantastic Recipe App</h1>
+
+      <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+
+      <div className="mt-5">
+        <h2>Featured Recipes</h2>
+        <RecipesList searchQuery={searchQuery} />
       </div>
     </div>
-  </div>
-);
+  );
+};
+
+export default Home;

@@ -1,17 +1,21 @@
+# test/models/recipe_test.rb
+
 require 'test_helper'
 
 class RecipeTest < ActiveSupport::TestCase
-  test "should not save recipe without title" do
-    recipe = Recipe.new
-    assert_not recipe.save, "Saved the recipe without a title"
+  test 'should return recipes containing all specified ingredients' do
+    recipe1 = Recipe.create(title: 'Recipe 1', ingredients: ['egg', 'milk'])
+    recipe2 = Recipe.create(title: 'Recipe 2', ingredients: ['cinnamon', 'sugar'])
+    recipe3 = Recipe.create(title: 'Recipe 3', ingredients: ['egg', 'cinnamon'])
+
+    assert_equal [recipe3], Recipe.search_by_ingredients(['egg', 'cinnamon'])
   end
 
-  test "should search recipes by ingredient names" do
-    tomato = Ingredient.create(name: "Tomato")
-    pasta = Recipe.create(title: "Pasta", instructions: "Cook pasta. Add tomato.")
-    pasta.ingredients << tomato
+  test 'should return all recipes when no ingredients are specified' do
+    recipe1 = Recipe.create(title: 'Recipe 1', ingredients: ['egg', 'milk'])
+    recipe2 = Recipe.create(title: 'Recipe 2', ingredients: ['cinnamon', 'sugar'])
+    recipe3 = Recipe.create(title: 'Recipe 3', ingredients: ['egg', 'cinnamon'])
 
-    results = Recipe.search_by_ingredient_names(["Tomato"])
-    assert_includes results, pasta, "Pasta recipe should be in the search results"
+    assert_equal [recipe1, recipe2, recipe3], Recipe.search_by_ingredients([])
   end
 end

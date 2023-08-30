@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 * Ruby version
+  3.2.1
 
 * System dependencies
-
-* Configuration
+  - ChromeDriver Headless
+  - Postgres 15 or newer
 
 * Database creation
+  `rails db:create`
 
 * Database initialization
+  1. `rails db:migrate`
+  2. `rails db:seed`
 
 * How to run the test suite
+  `rails test`
 
-* Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
+  `fly deploy`
 
 * ...
